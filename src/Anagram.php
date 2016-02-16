@@ -4,10 +4,32 @@ class Anagram {
       function makeAnagram($input_word, $comparisons)
       {
           $word_to_compare  = str_split($input_word);
-          $comparingword = str_split($comparisons);
+          sort($word_to_compare, SORT_STRING | SORT_FLAG_CASE);
+          $comparingwords = $comparisons;
+          $comparingwords_split_sorted = array();
+          $matching_keys = array();
+// var_dump($word_to_compare);
 
-          if ($word_to_compare == $comparingword){
-              return $comparisons;
+          foreach($comparingwords as $comparingword)
+          {
+              $split_comparingword = str_split($comparingword);
+              sort($split_comparingword, SORT_STRING | SORT_FLAG_CASE);
+
+              array_push($comparingwords_split_sorted, $split_comparingword);
+          }
+
+
+          foreach($comparingwords_split_sorted as $key=>$cword_split_sorted)
+          {
+              if ($word_to_compare == $cword_split_sorted)
+              {
+                  array_push($matching_keys, $comparisons[$key]);
+
+
+              }
+          }
+var_dump($matching_keys);
+              return $matching_keys;
           }
         //   $sorted_word_compare = sort($word_to_compare, SORT_FLAG_CASE);
         //   $comparisons_split = array();
@@ -20,7 +42,7 @@ class Anagram {
         //   }
 
 
-      }
+
 }
 
 ?>
