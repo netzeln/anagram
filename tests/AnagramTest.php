@@ -50,13 +50,13 @@
           //Arrange
           $test_Anagram = new Anagram;
           $input = "nap";
-          $comparisons = array("nap", "pan", "pen");
+          $comparisons = array("nap", "portland", "dog", "pan", "pen", "apn");
 
           //Act
           $result = $test_Anagram->makeAnagram($input, $comparisons);
 
           //Assert
-          $this->assertEquals(array("nap", "pan"), $result);
+          $this->assertEquals(array("nap", "pan", "apn"), $result);
       }
   }
 

@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/../web/css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="/../web/css/bootstrap-theme.min.css" type="text/css">
-        <link rel="stylesheet" href="/../web/css/styles.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="/css/styles.css" type="text/css">
         <meta charset="utf-8">
         <title></title>
     </head>
     <body>
-      <h1>Hello</h1>
+        <h1>Anagram Tester</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="/enter_word" method="post">
+                        <div class="form-group">
+                            <label for="first_word">Enter a First Word</label>
+                        </div>
+                            <input id="first_word" name="first_word" type="text">
+                            <button type="submit" class="btn btn-danger" name="button">submit</button>
+                        </form>
+
+                        <form action="/add_compare" method="post">
+                            <div class="form-group">
+                                <label for="comparison_words">Enter a list of words to compare (single words separated by a single space)</label>
+                            </div>
+                                <input id="comparison_words" name="comparison_words" type="text">
+                                <button type="submit" class="btn btn-danger" name="button">submit</button>
+                        </form>
+
+                        <form action="/show_matches" method="post">
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-primary" name="button">FIND YOUR MATCHES</button>
+                        </div>
+                        </form>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        Your Word is:{{word}}
+                    </p>
+
+                    <p> Which of these are angrams?:</p>
+                    <ul>
+                        {% for test in tests %}
+                            <li> {{test}} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+        </div>
+        </div>
+
+
     </body>
 </html>
