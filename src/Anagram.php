@@ -3,16 +3,19 @@ class Anagram {
 
       function makeAnagram($input_word, $comparisons)
       {
-          $word_to_compare  = str_split($input_word);
+
+          $word_to_compare  = str_split(strtolower($input_word));
           sort($word_to_compare, SORT_STRING | SORT_FLAG_CASE);
           $comparingwords = $comparisons;
           $comparingwords_split_sorted = array();
           $matching_keys = array();
 // var_dump($word_to_compare);
 
+
           foreach($comparingwords as $comparingword)
           {
-              $split_comparingword = str_split($comparingword);
+              strtolower($comparingword);
+              $split_comparingword = str_split(strtolower($comparingword));
               sort($split_comparingword, SORT_STRING | SORT_FLAG_CASE);
 
               array_push($comparingwords_split_sorted, $split_comparingword);
@@ -28,7 +31,7 @@ class Anagram {
 
               }
           }
-var_dump($matching_keys);
+
               return $matching_keys;
           }
         //   $sorted_word_compare = sort($word_to_compare, SORT_FLAG_CASE);

@@ -43,6 +43,17 @@
     return $app['twig']->render('index.html.twig', array('tests'=> $testarray, 'word'=> $original_word ));
     });
 
+    $app->get("/clear", function() use ($app){
+        $_SESSION['testcomparisoninput'] = array();
+        return $app['twig']->render('index.html.twig');
+    });
 
+    $app->get("/show_matches", function() use ($app){
+        $newAnagram = new Anagram;
+        $matches = $newAnagram->makeAnagram(($_SESSION['testwordinput'][0]), $_SESSION['testcomparisoninput']);
+        return $app['twig']->render('index.html.twig', array('matched'=>$matches));
+    });
     return $app;
+
+
  ?>
